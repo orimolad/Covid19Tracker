@@ -49,7 +49,7 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-
+console.log(countryCode)
     const url = 
       countryCode === "worldwide" 
       ? "https://disease.sh/v3/covid-19/all" 
@@ -67,7 +67,7 @@ function App() {
       // {/* having trouble to get the map to move to the right place onClick */ }
 
 
-      setMapZoom(5)
+      setMapZoom(6)
     });
   };
 
@@ -88,9 +88,29 @@ function App() {
         </div>
 
         <div className="app__stats">
-          <Infobox isRed active={casesType === 'cases'} onClick={(e) => setCasesType('cases')} title="Coronavirus Cases" cases={prettyPrintStat(countryInfo.todayCases)} total={prettyPrintStat(countryInfo.cases)} />
-          <Infobox active={casesType === 'recovered'} onClick={(e) => setCasesType('recovered')} title="Recovered" cases={prettyPrintStat(countryInfo.todayRecovered)} total={prettyPrintStat(countryInfo.recovered)} />
-          <Infobox isRed active={casesType === 'deaths'} onClick={(e) => setCasesType('deaths')} title="Deaths" cases={prettyPrintStat(countryInfo.todayDeaths)} total={prettyPrintStat(countryInfo.deaths)} />
+          <Infobox 
+            isRed 
+            active={casesType === 'cases'} 
+            onClick={(e) => setCasesType('cases')} 
+            title="Coronavirus Cases" 
+            cases={prettyPrintStat(countryInfo.todayCases)} 
+            total={prettyPrintStat(countryInfo.cases)} 
+          />
+          <Infobox 
+            active={casesType === 'recovered'} 
+            onClick={(e) => setCasesType('recovered')} 
+            title="Recovered" 
+            cases={prettyPrintStat(countryInfo.todayRecovered)} 
+            total={prettyPrintStat(countryInfo.recovered)} 
+          />
+          <Infobox 
+            isRed 
+            active={casesType === 'deaths'} 
+            onClick={(e) => setCasesType('deaths')} 
+            title="Deaths" 
+            cases={prettyPrintStat(countryInfo.todayDeaths)} 
+            total={prettyPrintStat(countryInfo.deaths)} 
+          />
         </div>
         <Map casesType={casesType} countries={mapCountries} center={mapCenter} zoom={mapZoom} />
       </div>
