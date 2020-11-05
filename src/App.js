@@ -60,17 +60,20 @@ console.log(countryCode)
     .then(data => {
       setInputCountry(countryCode);
       setCountryInfo(data);
-      console.log(data)
+      // console.log(data.countryInfo.lat)
+      if (countryCode === "worldwide") {
+        setMapCenter([34.80746, -40.4796])
+      } else {
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long])
+      }
+
       // setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      // { lat: 34.80746, lng: -40.4796 }
-      // {/* having trouble to get the map to move to the right place onClick */ }
-
-
       setMapZoom(6)
+      // lat: 34.80746, lng: -40.4796
+     
+
     });
   };
-
 
   return (
     <div className="app">
