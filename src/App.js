@@ -64,7 +64,7 @@ function App() {
       // setMapCenter([data.countryInfo.lat, data.countryInfo.long])
       setMapCenter([data.countryInfo.lat, data.countryInfo.long])
       // { lat: 34.80746, lng: -40.4796 }
-      {/* having trouble to get the map to move to the right place onClick */ }
+      // {/* having trouble to get the map to move to the right place onClick */ }
 
 
       setMapZoom(5)
@@ -98,7 +98,6 @@ function App() {
        <CardContent>
          <h3>Live Cases by Country</h3>
          <Table countries={tableData} />
-        {/* Table */}
               <h3>Worldwide new {casesType}</h3>
         <Linegraph className="app__graph" casesType={casesType}/>
         </CardContent>
