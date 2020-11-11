@@ -49,7 +49,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-console.log(countryCode)
     const url = 
       countryCode === "worldwide" 
       ? "https://disease.sh/v3/covid-19/all" 
@@ -60,18 +59,10 @@ console.log(countryCode)
     .then(data => {
       setInputCountry(countryCode);
       setCountryInfo(data);
-      // console.log(data.countryInfo.lat)
-      if (countryCode === "worldwide") {
-        setMapCenter([34.80746, -40.4796])
-      } else {
-        setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      }
-
-      // setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      setMapZoom(6)
-      // lat: 34.80746, lng: -40.4796
-     
-
+      countryCode === "worldwide" ? setMapCenter([34.80746, -40.4796]) 
+      : setMapCenter([data.countryInfo.lat, data.countryInfo.long])
+      // map zoom is not working when selecting country
+      setMapZoom(5)     
     });
   };
 
@@ -125,7 +116,20 @@ console.log(countryCode)
         <Linegraph className="app__graph" casesType={casesType}/>
         </CardContent>
      </Card>
+
+         {/* // <!-- The core Firebase JS SDK is always required and must be listed first-- > */}
+      <script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+{/* // <!--TODO: Add SDKs for Firebase products that you want to use
+      //   https://firebase.google.com/docs/web/setup#available-libraries --> */}
+
+      <script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+
+{/* // <!--Initialize Firebase-- > */}
+      <script src="/__/firebase/init.js"></script>
     </div>
+    
+
   );
 }
 

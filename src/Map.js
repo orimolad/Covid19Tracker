@@ -11,6 +11,7 @@ function UpdateMapCenter({ center }) {
     return (<Fragment />)
 }
 
+
 function Map({ countries, casesType, center, zoom }) {
     return (
         <div className="map">
