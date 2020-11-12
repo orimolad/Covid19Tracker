@@ -49,7 +49,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-console.log(countryCode)
     const url = 
       countryCode === "worldwide" 
       ? "https://disease.sh/v3/covid-19/all" 
@@ -60,18 +59,12 @@ console.log(countryCode)
     .then(data => {
       setInputCountry(countryCode);
       setCountryInfo(data);
-      // console.log(data.countryInfo.lat)
       if (countryCode === "worldwide") {
         setMapCenter([34.80746, -40.4796])
       } else {
         setMapCenter([data.countryInfo.lat, data.countryInfo.long])
       }
-
-      // setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      setMapZoom(6)
-      // lat: 34.80746, lng: -40.4796
-     
-
+      setMapZoom(4)    
     });
   };
 
@@ -125,7 +118,11 @@ console.log(countryCode)
         <Linegraph className="app__graph" casesType={casesType}/>
         </CardContent>
      </Card>
+
+
     </div>
+    
+
   );
 }
 

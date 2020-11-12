@@ -32,7 +32,7 @@ function uuidv4() {
         return v.toString(16);
     });
 }
-// Draw cicrlces on the map with interactive tooltips
+
 export const showDataOnMap = (data, casesType = 'cases') => {
     return (
         data.map(country => (
