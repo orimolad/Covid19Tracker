@@ -59,10 +59,12 @@ function App() {
     .then(data => {
       setInputCountry(countryCode);
       setCountryInfo(data);
-      countryCode === "worldwide" ? setMapCenter([34.80746, -40.4796]) 
-      : setMapCenter([data.countryInfo.lat, data.countryInfo.long])
-      // map zoom is not working when selecting country
-      setMapZoom(5)     
+      if (countryCode === "worldwide") {
+        setMapCenter([34.80746, -40.4796])
+      } else {
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long])
+      }
+      setMapZoom(4)    
     });
   };
 
